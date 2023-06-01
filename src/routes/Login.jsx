@@ -1,4 +1,5 @@
 import { useState } from 'react'
+// import { redirect } from 'react-router-dom'
 import { account } from '../appwrite'
 
 const Login = () => {
@@ -12,7 +13,7 @@ const Login = () => {
     const promise = account.createEmailSession(email, password)
     promise.then((response) => {
       console.log(response)
-      // router.push('/')
+      // redirect('/')
     }, (error) => {
       console.log(error);
     })
