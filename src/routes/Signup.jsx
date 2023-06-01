@@ -1,4 +1,5 @@
 import { useState } from 'react'
+// import { redirect } from "react-router-dom";
 import { account } from '../appwrite'
 import { ID } from 'appwrite'
 
@@ -20,7 +21,7 @@ const Signup = () => {
     
     promise.then((response) => {
       console.log(response);
-      // router.push('/login')
+      // redirect('login')
     }, (error) => {
       console.log(error)
     })
