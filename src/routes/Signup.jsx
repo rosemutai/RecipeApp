@@ -1,10 +1,11 @@
 import { useState } from 'react'
-// import { redirect } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { account } from '../appwrite'
 import { ID } from 'appwrite'
 
 const Signup = () => {
 
+  const navigate = useNavigate()
   const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -14,17 +15,20 @@ const Signup = () => {
 
     const promise = account.create(
       ID.unique(),
-      username,
       email,
-      password
-    )
+      password,
+      username
+    );
     
-    promise.then((response) => {
-      console.log(response);
-      // redirect('login')
-    }, (error) => {
-      console.log(error)
-    })
+    promise.then(
+      function(response) {
+        console.log(response);
+        navigate('login')
+      }, 
+      function(error) {
+        console.log(error)
+      }
+    )
   }
   
 
