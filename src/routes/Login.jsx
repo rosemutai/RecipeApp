@@ -1,9 +1,10 @@
 import { useState } from 'react'
-// import { redirect } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { account } from '../appwrite'
 
 const Login = () => {
 
+  const navigate = useNavigate()
   const [email, SetEmail] = useState('')
   const [password, setPassword] = useState('')
 
@@ -11,10 +12,11 @@ const Login = () => {
     e.preventDefault()
 
     const promise = account.createEmailSession(email, password)
-    promise.then((response) => {
+    promise.then(function(response) {
       console.log(response)
-      // redirect('/')
-    }, (error) => {
+      navigate('/')
+    },
+    function(error) {
       console.log(error);
     })
   }
